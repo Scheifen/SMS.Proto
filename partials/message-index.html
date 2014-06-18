@@ -1,0 +1,39 @@
+<div class="text-center">
+<h2 ng-controller="indexController as index"Message Index</h2>
+	<div ng-repeat="message in index.messages">
+		<div>
+			<h4>Conversation with {{message.from.name}}</h4>
+			<h5 class="">{{message.body}}</h5>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Sample Message for reference commented out
+[{
+    "message_id": "5009b72ab14d068704000001",
+    "from": [{
+        "_id" : "5009b72ab14d068704000014",
+        "name" : "Ben Bullock",
+        "type" : "volunteer"
+    }],
+    "to": [{
+        "_id" : "5018f85ab14d068504000023",
+        "name" : "Michigan & Randolph",
+        "type" : "location"
+    }],
+    "body" : "This is our first test message",
+    "time" : "5-31-14 12:00PM",
+    "type" : "inbound",
+    "location_id": "5018f85ab14d068504000023",
+    "location_name" : "Michiga & Randolph",
+    "zone_id" : "4fe732327a959ce45f000002"
+},
+-->

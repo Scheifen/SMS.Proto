@@ -1,0 +1,10 @@
+/* Main CSS for Messages */
+
+body {
+	padding-top: 20px;
+	font-weight: 400;
+}
+
+.center{text-align: center;}
+
+p{font-size: 18px;}
