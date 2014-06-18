@@ -8,3 +8,5 @@ body {
 .center{text-align: center;}
 
 p{font-size: 18px;}
+
+.has-border{border-width:2px;}

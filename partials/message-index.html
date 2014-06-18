@@ -1,11 +1,8 @@
-<div class="text-center">
-<h2 ng-controller="indexController as index"Message Index</h2>
+<div class="text-center has-border" ng-controller="indexController as index">
+<h3>Recent Messages</h3>
 	<div ng-repeat="message in index.messages">
-		<div>
 			<h4>Conversation with {{message.from.name}}</h4>
 			<h5 class="">{{message.body}}</h5>
-		</div>
-
 	</div>
 </div>
 

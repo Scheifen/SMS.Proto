@@ -10,18 +10,17 @@ messageApp.config(['$routeProvider',
 	 	when('/', {
 	 		templateUrl: 'partials/message-index.html',
 	 	}).
-	 	when('/:indexController.messages.messageId', {
-	 		templateUrl: 'partials/message-detail.html',		
-	 	}).
+	 	// when('/:messageId', {
+	 	// 	templateUrl: 'partials/message-detail.html',
+	 	// 	controller:'detailCtrl',		
+	 	// }).
 	 	otherwise({
 	 		redirectTo: '/'
 	 	});
 }]);
 
-messageApp.controller('indexController', ['$http', '$scope' function($http){
+messageApp.controller('indexController', ['$http', function($http){
 	var index = this;
-	$scope.messages = {};
+	this.messages = {};
 	$http.get('/locust-sms-prototype/FakeMessages.json').success(function(data){index.messages=data});
 }]);
-
-messageApp.controller('detailController', ['$http', '$routeParams', ])
