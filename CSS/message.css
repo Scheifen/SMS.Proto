@@ -15,6 +15,12 @@ p{font-size: 18px;}
 
 .indent{text-indent: 3px;}
 
+.left{float:left;}
+.right{float:right;}
+.clearboth{float:auto;clear:both;}
+.headings{clear:both;}
+.body{position:absolute;clear:both;}
+
 #indexMessage{
 	width:90%;
 	width: 200px;

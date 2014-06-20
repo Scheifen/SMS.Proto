@@ -9,6 +9,7 @@ messageApp.config(['$routeProvider',
 	 $routeProvider.
 	 	when('/', {
 	 		templateUrl: 'partials/message-index.html',
+	 		controller: 'indexController'
 	 	}).
 	 	when('/messages/:message_id', {
 	 		templateUrl: 'partials/message-detail.html',
@@ -19,16 +20,16 @@ messageApp.config(['$routeProvider',
 	 	});
 }]);
 
-messageApp.controller('indexController', ['$http', function($http){
+messageApp.controller('indexController', ['$http', '$scope', function($http, $scope){
 	var index = this;
 	this.messages = {};
 	$http.get('/locust-sms-prototype/FakeMessages.json').success(function(data){
-		index.messages=data});
+		$scope.messages=data});
 }]);
 
 messageApp.controller('detailController', ['$http', '$routeParams', function($http, $routeParams){
 	var detail = this;
-	$http.get('/locusts-sms-prototype/messages/'+$routeParams.message_id+'.json').success(function(data){
+	$http.get('/locust-sms-prototype/messages/'+$routeParams.message_id+'.json').success(function(data){
 		detail.message = data;
 	});
 }]);

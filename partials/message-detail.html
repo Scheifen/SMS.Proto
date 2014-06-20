@@ -1,7 +1,13 @@
-<div ng-controller="detailController as detail">
-	<h4>{{detail.message.from.name}} {{detail.message.to.name}}</h4>
-	<div>
-	{{detail.message.body}}
+<div ng-controller="detailController as detail" class="maincont">
+	<div class="headings">
+		<h4 class="right">{{detail.message.from.name}}</h4> <h4 class="left">{{detail.message.to.name}}</h4>
 	</div>
 
+	<div>
+		{{detail.message.body}}
+	</div>
+	
+	<a href="#/">
+		<h5>Return to index</h5>
+	</a>
 </div>

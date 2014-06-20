@@ -1,8 +1,8 @@
-<div class="text-center has-border maincont" ng-controller="indexController as index">
+<div class="text-center has-border maincont">
 <h3>Recent Messages</h3>
-	<div ng-repeat="message in index.messages | orderBy:message.time" class="text-left indent">
+	<div ng-repeat="message in messages" class="text-left indent">
 		<div id="indexMessage">
-			<h5>{{message.from.name}} & {{message.to.name}}</h5>
+			<h5>{{message.from.name}} & {{message.to.name.join(', ') || message.to.name}}</h5>
 			<a href="#/messages/{{message.message_id}}">
 			<h6 class="">{{message.body | limitTo: 24}} ...</h5>
 			</a>
