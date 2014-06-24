@@ -1,10 +1,10 @@
-<div ng-controller="detailController as detail" class="maincont">
-	<div class="headings">
-		<h4 class="right">{{detail.message.from.name}}</h4> <h4 class="left">{{detail.message.to.name}}</h4>
+<div class="maincont">
+	<div>
+		<h4>{{messages.from.name}} to {{messages.to.name.join(', ') || messages.to.name}}</h4>
 	</div>
 
 	<div>
-		{{detail.message.body}}
+		{{messages.body}}
 	</div>
 	
 	<a href="#/">

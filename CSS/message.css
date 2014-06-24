@@ -15,11 +15,17 @@ p{font-size: 18px;}
 
 .indent{text-indent: 3px;}
 
-.left{float:left;}
-.right{float:right;}
+.left{text-align:left;}
+.right{text-align:right;}
 .clearboth{float:auto;clear:both;}
 .headings{clear:both;}
 .body{position:absolute;clear:both;}
+.notbold{font-weight: normal;}
+
+.autoleft{
+	width:auto;
+	margin:0 auto;
+}
 
 #indexMessage{
 	width:90%;

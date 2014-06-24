@@ -1,4 +1,4 @@
-//'use strict';
+'use strict';
 
 /* Main App */
 
@@ -23,13 +23,17 @@ messageApp.config(['$routeProvider',
 messageApp.controller('indexController', ['$http', '$scope', function($http, $scope){
 	var index = this;
 	this.messages = {};
-	$http.get('/locust-sms-prototype/FakeMessages.json').success(function(data){
-		$scope.messages=data});
+	$http({
+		method: 'GET',
+		url:'/locust-sms-prototype/FakeMessages.json',
+	}).success(function(data){
+		$scope.messages=data;
+	});
 }]);
 
-messageApp.controller('detailController', ['$http', '$routeParams', function($http, $routeParams){
+messageApp.controller('detailController', ['$http', '$routeParams', '$scope', function($http, $routeParams, $scope){
 	var detail = this;
 	$http.get('/locust-sms-prototype/messages/'+$routeParams.message_id+'.json').success(function(data){
-		detail.message = data;
+		$scope.messages = data;
 	});
 }]);

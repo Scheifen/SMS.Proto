@@ -1,13 +1,27 @@
+    <!-- main container -->
 <div class="text-center has-border maincont">
-<h3>Recent Messages</h3>
-	<div ng-repeat="message in messages" class="text-left indent">
-		<div id="indexMessage">
-			<h5>{{message.from.name}} & {{message.to.name.join(', ') || message.to.name}}</h5>
-			<a href="#/messages/{{message.message_id}}">
-			<h6 class="">{{message.body | limitTo: 24}} ...</h5>
-			</a>
-		</div>
-	</div>
+    
+    <!-- location selection filter-->
+    <p2>Select a Location</p2>
+    <div ng-repeat="message in messages" class="autoleft">
+        <input type="radio" name="location" ng-model="locationSelect" ng-value="message.location_name">
+        {{message.location_name}}</input>
+    </div>
+
+    <!-- message index -->
+    <div>
+        <h3>Recent Messages for {{locationSelect}}</h3>
+    	<input ng-model="query" placeholder="Search by name, etc">
+        <br><br>
+    	<div ng-repeat="message in messages | filter:query | orderBy:orderProp" class="text-left indent">
+    		<div id="indexMessage">
+    			<h5>{{message.to.name.join(', ') || message.to.name}}</h5>
+    			<a href="#/messages/{{message.message_id}}">
+    			<h6 class="">{{message.body | limitTo:29}} ...</h6>
+    			</a>
+    		</div>
+    	</div>
+    </div>
 </div>
 
 
@@ -17,21 +31,21 @@
 
 
 
-<!-- Sample Message for reference commented out
+<!-- Sample Message for reference in building, commented out (remove before release)
 [{
     "message_id": "5009b72ab14d068704000001",
-    "from": [{
+    "from": {
         "_id" : "5009b72ab14d068704000014",
         "name" : "Ben Bullock",
         "type" : "volunteer"
-    }],
-    "to": [{
+    },
+    "to": {
         "_id" : "5018f85ab14d068504000023",
         "name" : "Michigan & Randolph",
         "type" : "location"
-    }],
+    },
     "body" : "This is our first test message",
-    "time" : "5-31-14 12:00PM",
+    "time" : "epoch UNIX time",
     "type" : "inbound",
     "location_id": "5018f85ab14d068504000023",
     "location_name" : "Michiga & Randolph",
