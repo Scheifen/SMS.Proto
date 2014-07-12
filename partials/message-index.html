@@ -1,26 +1,45 @@
     <!-- main container -->
 <div class="text-center has-border maincont">
-    
-    <!-- location selection filter-->
-    <p2>Select a Location</p2>
-    <div ng-repeat="message in messages" class="autoleft">
-        <input type="radio" name="location" ng-model="locationSelect" ng-value="message.location_name">
-        {{message.location_name}}</input>
+
+    <!--Entry Screen / Initial Location Selection. Hidden after first selection -->
+    <div ng-hide="locationSelect">
+    <h4>You have access to multiple locations.</h4><h3> Please select one to continue.</h3>
+        <ul ng-repeat="message in messages" class="autoleft">
+            <li>
+                <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
+                {{message.location_name}}</input>
+            </li>
+        </ul>
     </div>
 
-    <!-- message index -->
-    <div>
-        <h3>Recent Messages for {{locationSelect}}</h3>
-    	<input ng-model="query" placeholder="Search by name, etc">
-        <br><br>
-    	<div ng-repeat="message in messages | filter:query | orderBy:orderProp" class="text-left indent">
-    		<div id="indexMessage">
-    			<h5>{{message.to.name.join(', ') || message.to.name}}</h5>
-    			<a href="#/messages/{{message.message_id}}">
-    			<h6 class="">{{message.body | limitTo:29}} ...</h6>
-    			</a>
-    		</div>
-    	</div>
+    <!-- Displays this section after intial selection -->
+    <div ng-show="locationSelect">
+        
+        <!-- location selection filter-->
+        <a href="" ng-click="toggle1=!toggle1">Select a Location</a>
+        <div>
+            <ul ng-repeat="message in messages" class="autoleft" ng-show="toggle1">
+                <li>
+                    <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
+                    {{message.location_name}}</input>
+                </li>
+            </ul>
+        </div>
+
+        <!-- message index -->
+        <div>
+            <h3>Recent Messages for {{locationSelect}}</h3>
+        	<input ng-model="query" placeholder="Search by name, etc">
+            <br><br>
+        	<div ng-repeat="message in messages | filter:query | orderBy:orderProp  | filter:locationSelect" class="text-left indent">
+        		<div id="indexMessage">
+        			<h5>{{message.to.name.join(', ') || message.to.name}}</h5>
+        			<a href="#/messages/{{message.message_id}}">
+        			<h6 class="">{{message.body | limitTo:29}} ...</h6>
+        			</a>
+        		</div>
+        	</div>
+        </div>
     </div>
 </div>
 

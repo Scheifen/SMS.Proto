@@ -22,6 +22,8 @@ messageApp.config(['$routeProvider',
 
 messageApp.controller('indexController', ['$http', '$scope', function($http, $scope){
 	var index = this;
+	var selectedLocation;
+	var locationSelect;
 	this.messages = {};
 	$http({
 		method: 'GET',
