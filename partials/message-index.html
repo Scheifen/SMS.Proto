@@ -5,12 +5,10 @@
     <div ng-hide="locationSelect">
         <div class="centerbox center">
             <h4>You have access to multiple locations.</h4><h3> Please select one to continue.</h3>
-                <ul ng-repeat="message in messages" class="autoleft">
-                    <li>
+                <div ng-repeat="message in messages" class="autoleft">
                         <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
                         {{message.location_name}}</input>
-                    </li>
-                </ul>
+                </div>
         </div>
     </div>
 
@@ -20,20 +18,18 @@
         <!-- location selection filter-->
         <a href="" ng-click="toggle1=!toggle1">Select a Location</a>
         <div>
-            <ul ng-repeat="message in messages" class="autoleft" ng-show="toggle1">
-                <li>
+            <div ng-repeat="message in messages" class="autoleft" ng-show="toggle1">
                     <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
                     {{message.location_name}}</input>
-                </li>
-            </ul>
+            </div>
         </div>
-        
+
         <!-- message index -->
         <div>
             <h3>Recent Messages for {{locationSelect}}</h3>
         	<input ng-model="query" placeholder="Search by name, etc">
             <br><br>
-        	<div ng-repeat="message in messages | filter:query | filter:locationSelect" class="text-left indent">
+        	<div ng-repeat="message in messages | filter:query | filter:locationSelect:strict" class="text-left indent">
         		<div id="indexMessage">
         			<h5>{{message.to.name.join(', ') || message.to.name}}</h5>
         			<a href="#/messages/{{message.message_id}}">

@@ -20,10 +20,9 @@ messageApp.config(['$routeProvider',
 	 	});
 }]);
 
-messageApp.controller('indexController', ['$http', '$scope', function($http, $scope){
+messageApp.controller('indexController', ['$http', '$scope','locationSelector', function($http, $scope){
 	var index = this;
 	this.messages = {};
-	var locationsClean = [];
 
 	$http({
 		method: 'GET',
@@ -35,9 +34,11 @@ messageApp.controller('indexController', ['$http', '$scope', function($http, $sc
 	});
 }]);
 
-messageApp.controller('detailController', ['$http', '$routeParams', '$scope', function($http, $routeParams, $scope){
+messageApp.controller('detailController', ['$http', '$routeParams', '$scope','locationSelector', function($http, $routeParams, $scope){
 	var detail = this;
 	$http.get('/locust-sms-prototype/messages/'+$routeParams.message_id+'.json').success(function(data){
 		$scope.messages = data;
-	}).error(function(data){alert('Sorry, something went wrong. Please try again.')})
+	}).error(function(data){
+		alert('Sorry, something went wrong. Please try again.')
+	});
 }]);
