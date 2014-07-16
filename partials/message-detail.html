@@ -1,13 +1,59 @@
-<div class="maincont">
-	<div>
-		<h4>{{messages.from.name}} to {{messages.to.name.join(', ') || messages.to.name}}</h4>
-	</div>
+<a href="#/">
+	<h5>Return to index</h5>
+</a>
+	<!--Thread view-->
+<div class="maincont" ng-repeat="message in messages | limitTo: 6">
+	<div ng-class="{inbound: message.type === 'inbound', outbound: message.type === 'outbound'}">
+		<div>
+			{{message.from.name}} to {{message.to.name.join(', ') || message.to.name}}
+		</div>
 
-	<div>
-		{{messages.body}}
+		<div>
+			<p>{{message.body}}</p>
+		</div>
 	</div>
-	
-	<a href="#/">
-		<h5>Return to index</h5>
-	</a>
 </div>
+
+
+
+<!-- Sample JSON commented out for reference. REMOVE BEFORE RELEASE -->
+
+<!-- 
+[{
+    "message_id": "0000004",
+    "from" : {
+        "_id" : "00000005",
+        "name" : "Washington - Red",
+        "type" : "location"
+    },
+    "to": {
+        "_id": ["5009b72ab14d068704000014","5009b6a3b14d061606000010"],
+        "name": ["Ben Bullock","Romie Bullock"],
+        "type" : "volunteer"
+    },
+    "body" : "You are going to work Tuesday evening the rest of your life lol",
+    "time" : "1403561419142",
+    "type" : "outbound",
+    "location_id": "5018f85ab14d068504000023",
+    "location_name" : "Michigan & Randolph",
+    "zone_id" : "4fe732327a959ce45f000002"
+},
+{
+    "message_id": "0000005",
+    "from" : {
+        "_id" : "5009b6a3b14d061606000010",
+        "name" : "Romie Bullock",
+        "type" : "volunteer"
+    },
+    "to": {
+        "_id": "00000005",
+        "name": "Washington - Red",
+        "type" : "location"
+    },
+    "body" : "Never! I intend to remain flexable, plus what if the CO visits?",
+    "time" : "1403550619142",
+    "type" : "inbound",
+    "location_id": "5018f85ab14d068504000023",
+    "location_name" : "Michigan & Randolph",
+    "zone_id" : "4fe732327a959ce45f000002"
+}] -->

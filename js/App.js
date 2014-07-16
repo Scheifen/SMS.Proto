@@ -22,14 +22,16 @@ messageApp.config(['$routeProvider',
 
 messageApp.controller('indexController', ['$http', '$scope', function($http, $scope){
 	var index = this;
-	var selectedLocation;
-	var locationSelect;
 	this.messages = {};
+	var locationsClean = [];
+
 	$http({
 		method: 'GET',
 		url:'/locust-sms-prototype/FakeMessages.json',
 	}).success(function(data){
 		$scope.messages=data;
+	}).error(function(data){
+		alert('Sorry, something went wrong. Please try again');
 	});
 }]);
 
@@ -37,5 +39,5 @@ messageApp.controller('detailController', ['$http', '$routeParams', '$scope', fu
 	var detail = this;
 	$http.get('/locust-sms-prototype/messages/'+$routeParams.message_id+'.json').success(function(data){
 		$scope.messages = data;
-	});
+	}).error(function(data){alert('Sorry, something went wrong. Please try again.')})
 }]);

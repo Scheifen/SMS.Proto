@@ -7,6 +7,8 @@ body {
 
 .center{text-align: center;}
 
+.centerbox{width:80%;margin-left:auto;margin-right:auto;padding-bottom:13px;}
+
 p{font-size: 18px;}
 
 .has-border{border-width:2px;border-style:solid;}
@@ -37,3 +39,35 @@ p{font-size: 18px;}
 	margin-left: auto;
 	height: 80px;
 }
+
+.inbound{
+	float:left;
+	border-style:solid;
+	border-width:1px;
+	background-color:lightgrey;
+	color:black;
+	padding-bottom:20px;
+	clear:right;
+	padding:3px;
+	width:70%;
+	margin:3px;
+}
+
+.outbound{
+	float:right;
+	border-style:solid;
+	border-width:1px;
+	background-color:darkblue;
+	color:white;
+	padding-bottom:20px;
+	clear:left;
+	padding:3px;
+	width:70%;
+	margin:3px;
+}
+
+
+
+
+
+

@@ -3,13 +3,15 @@
 
     <!--Entry Screen / Initial Location Selection. Hidden after first selection -->
     <div ng-hide="locationSelect">
-    <h4>You have access to multiple locations.</h4><h3> Please select one to continue.</h3>
-        <ul ng-repeat="message in messages" class="autoleft">
-            <li>
-                <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
-                {{message.location_name}}</input>
-            </li>
-        </ul>
+        <div class="centerbox center">
+            <h4>You have access to multiple locations.</h4><h3> Please select one to continue.</h3>
+                <ul ng-repeat="message in messages" class="autoleft">
+                    <li>
+                        <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
+                        {{message.location_name}}</input>
+                    </li>
+                </ul>
+        </div>
     </div>
 
     <!-- Displays this section after intial selection -->
@@ -25,13 +27,13 @@
                 </li>
             </ul>
         </div>
-
+        
         <!-- message index -->
         <div>
             <h3>Recent Messages for {{locationSelect}}</h3>
         	<input ng-model="query" placeholder="Search by name, etc">
             <br><br>
-        	<div ng-repeat="message in messages | filter:query | orderBy:orderProp  | filter:locationSelect" class="text-left indent">
+        	<div ng-repeat="message in messages | filter:query | filter:locationSelect" class="text-left indent">
         		<div id="indexMessage">
         			<h5>{{message.to.name.join(', ') || message.to.name}}</h5>
         			<a href="#/messages/{{message.message_id}}">
@@ -45,12 +47,7 @@
 
 
 
-
-
-
-
-
-<!-- Sample Message for reference in building, commented out (remove before release)
+<!-- Sample Message for reference in building, commented out (REMOVE BEFORE RELEASE)
 [{
     "message_id": "5009b72ab14d068704000001",
     "from": {
