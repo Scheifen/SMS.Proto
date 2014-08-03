@@ -1,0 +1,21 @@
+<!-- Main container -->
+<div class="maincont has-border">
+
+	<!-- New Message info  -->
+	<div class="center">
+		<form>
+			<fieldset>
+				<legend>New Message</legend>
+				<label for="recipient">To:</h4></label>
+				<input type="text" name="recipient" id="recipient" placeholder="Enter Recipients Here">
+				<br>
+				<label for="messBody" class="margin-top">Message Body</h4></label>
+				<br>
+				<textarea rows="10" cols="30" id="messBody" ng-model="messBody"></textarea>
+				<h6>Characters: {{messBody.length || 0}}/120</h6>
+				<h6 ng-show="messBody.length > 120" class="angry">The text you have entered exceeds the length of a single message. It will be split into {{messBody.length / 120 + 1 | number:0}} messages.</h6>
+			</fieldset>
+		</form>
+	</div>
+	<a href="#/">Back to Index</a>
+</div>

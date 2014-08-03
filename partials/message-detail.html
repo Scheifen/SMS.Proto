@@ -2,7 +2,7 @@
 	<h5>Return to index</h5>
 </a>
 	<!--Thread view-->
-<div class="maincont" ng-repeat="message in messages">
+<div class="maincont" ng-repeat="message in messages | limitTo: 6">
 	<div ng-class="{inbound: message.type === 'inbound', outbound: message.type === 'outbound'}">
 		<div>
 			{{message.from.name}} to {{message.to.name.join(', ') || message.to.name}}

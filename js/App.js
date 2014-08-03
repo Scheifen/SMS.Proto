@@ -13,15 +13,19 @@ messageApp.config(['$routeProvider',
 	 	}).
 	 	when('/messages/:message_id', {
 	 		templateUrl: 'partials/message-detail.html',
-	 		controller:'detailController',		
+	 		controller:'detailController',
+	 	}).
+	 	when('/newMessage',{
+	 		templateUrl: 'partials/new-message.html'
 	 	}).
 	 	otherwise({
 	 		redirectTo: '/'
 	 	});
 }]);
 
-messageApp.controller('indexController', ['$http', '$scope','locationSelector', function($http, $scope){
+messageApp.controller('indexController', ['$http', '$scope', function($http, $scope){
 	var index = this;
+	var selectedLocation = function(){selectedLocation = locationSelect};
 	this.messages = {};
 
 	$http({
@@ -34,7 +38,7 @@ messageApp.controller('indexController', ['$http', '$scope','locationSelector', 
 	});
 }]);
 
-messageApp.controller('detailController', ['$http', '$routeParams', '$scope','locationSelector', function($http, $routeParams, $scope){
+messageApp.controller('detailController', ['$http', '$routeParams', '$scope', function($http, $routeParams, $scope){
 	var detail = this;
 	$http.get('/locust-sms-prototype/messages/'+$routeParams.message_id+'.json').success(function(data){
 		$scope.messages = data;

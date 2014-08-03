@@ -6,7 +6,7 @@
         <div class="centerbox center">
             <h4>You have access to multiple locations.</h4><h3> Please select one to continue.</h3>
                 <div ng-repeat="message in messages" class="autoleft">
-                        <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
+                        <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}" ng-click="selectedLocation()">
                         {{message.location_name}}</input>
                 </div>
         </div>
@@ -38,6 +38,13 @@
         		</div>
         	</div>
         </div>
+    </div>
+
+    <!-- new Message page redirect button -->
+    <div class="has-border margin-top" ng-show="locationSelect">
+        <a href="#/newMessage">
+            <h6>Compose a New Message</h6>
+        </a>
     </div>
 </div>
 

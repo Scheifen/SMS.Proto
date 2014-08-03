@@ -9,6 +9,8 @@ body {
 
 .centerbox{width:80%;margin-left:auto;margin-right:auto;padding-bottom:13px;}
 
+.center-padded{width: 80%;height: 90%;}
+
 p{font-size: 18px;}
 
 .has-border{border-width:2px;border-style:solid;}
@@ -23,6 +25,9 @@ p{font-size: 18px;}
 .headings{clear:both;}
 .body{position:absolute;clear:both;}
 .notbold{font-weight: normal;}
+.margin-top{margin-top: 6px;}
+
+.angry{color: red;}
 
 .autoleft{
 	width:auto;
