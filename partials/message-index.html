@@ -6,7 +6,7 @@
         <div class="centerbox center">
             <h4>You have access to multiple locations.</h4><h3> Please select one to continue.</h3>
                 <div ng-repeat="message in messages" class="autoleft">
-                        <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}" ng-click="selectedLocation()">
+                        <input type="checkbox" name="select1" ng-model="$parent.locationSelect" ng-true-value="{{message.location_name}}">
                         {{message.location_name}}</input>
                 </div>
         </div>
@@ -26,10 +26,10 @@
 
         <!-- message index -->
         <div>
-            <h3>Recent Messages for {{locationSelect}}</h3>
+            <h3>Recent Messages for {{locationSelect || "All Locations"}}</h3>
         	<input ng-model="query" placeholder="Search by name, etc">
             <br><br>
-        	<div ng-repeat="message in messages | filter:query | filter:locationSelect:strict" class="text-left indent">
+        	<div ng-repeat="message in messages | filter:query | filter:locationSelect:strict | limitTo:messLimit " class="text-left indent">
         		<div id="indexMessage">
         			<h5>{{message.to.name.join(', ') || message.to.name}}</h5>
         			<a href="#/messages/{{message.message_id}}">
@@ -37,6 +37,9 @@
         			</a>
         		</div>
         	</div>
+            <div class="text-left indent center" id="loadMore">
+                <a href="" ng-click="messLimit = messLimit + 4">Load More Messages</a>
+            </div>
         </div>
     </div>
 

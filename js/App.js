@@ -25,8 +25,8 @@ messageApp.config(['$routeProvider',
 
 messageApp.controller('indexController', ['$http', '$scope', function($http, $scope){
 	var index = this;
-	var selectedLocation = function(){selectedLocation = locationSelect};
 	this.messages = {};
+	$scope.messLimit = 4;
 
 	$http({
 		method: 'GET',
@@ -46,3 +46,5 @@ messageApp.controller('detailController', ['$http', '$routeParams', '$scope', fu
 		alert('Sorry, something went wrong. Please try again.')
 	});
 }]);
+
+var raiseLimit = function(x){x+4;};
