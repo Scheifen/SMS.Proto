@@ -1,8 +1,12 @@
 <a href="#/">
 	<h5>Return to index</h5>
 </a>
+    <!-- Thread Search -->
+<div>
+    <input type="text" class="center-padded centered" ng-model="query" placeholder="Search by text, name, etc"></input>
+</div>
 	<!--Thread view-->
-<div class="maincont" ng-repeat="message in messages | limitTo: 6">
+<div class="maincont" ng-repeat="message in messages | filter:query | limitTo: threadLimit">
 	<div ng-class="{inbound: message.type === 'inbound', outbound: message.type === 'outbound'}">
 		<div>
 			{{message.from.name}} to {{message.to.name.join(', ') || message.to.name}}
@@ -14,7 +18,10 @@
 	</div>
 </div>
 
-
+    <!-- Load more button -->
+<div class="footer">
+    <a href="" ng-click="threadLimit = threadLimit + 4">Load More Messages</a>
+</div>
 
 <!-- Sample JSON commented out for reference. REMOVE BEFORE RELEASE -->
 

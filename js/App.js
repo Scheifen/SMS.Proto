@@ -40,6 +40,7 @@ messageApp.controller('indexController', ['$http', '$scope', function($http, $sc
 
 messageApp.controller('detailController', ['$http', '$routeParams', '$scope', function($http, $routeParams, $scope){
 	var detail = this;
+	$scope.threadLimit=6;
 	$http.get('/locust-sms-prototype/messages/'+$routeParams.message_id+'.json').success(function(data){
 		$scope.messages = data;
 	}).error(function(data){
